@@ -21,7 +21,7 @@ class PlantumlMacroTest < ActionController::TestCase
   include ERB::Util
 
   def setup
-    Setting.plugin_plantuml['plantuml_binary_default'] = '/usr/bin/plantuml'
+    Setting.plugin_plantuml['plantuml_binary_default'] = ENV['REDMINE_PLANTUML_EXECUTABLE'] || '/usr/bin/plantuml'
   end
 
   def test_plantuml_macro_with_png
