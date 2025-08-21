@@ -14,7 +14,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 class PlantumlController < ApplicationController
-  unloadable
+  Rails::VERSION::MAJOR < 5 and unloadable
 
   def convert
     frmt = PlantumlHelper.check_format(params[:content_type])
