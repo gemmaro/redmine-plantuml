@@ -1,5 +1,5 @@
 class PlantumlController < ApplicationController
-  unloadable
+  Rails::VERSION::MAJOR < 5 and unloadable
 
   def convert
     frmt = PlantumlHelper.check_format(params[:content_type])
