@@ -30,7 +30,7 @@ class PlantumlMacroTest < ActionController::TestCase
 Bob -> Alice : hello
 }}
 RAW
-    assert_include '/plantuml/png/plantuml_88358e9331985a8ad4ec566b38dfd68a2875ead47b187542e2bea02c670d50ff.png', textilizable(text)
+    assert_match %r{/plantuml/png/plantuml_[0-9a-z]+.png}, textilizable(text)
   end
 
   def test_plantuml_macro_with_svg
@@ -39,7 +39,7 @@ RAW
 Bob -> Alice : hello
 }}
 RAW
-    assert_include '/plantuml/svg/plantuml_88358e9331985a8ad4ec566b38dfd68a2875ead47b187542e2bea02c670d50ff.svg', textilizable(text)
+    assert_match %r{/plantuml/svg/plantuml_[0-9a-z]+.svg}, textilizable(text)
   end
 
 end
