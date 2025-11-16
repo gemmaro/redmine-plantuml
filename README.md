@@ -50,3 +50,32 @@ Therefore every input will be sanitited before writing out the .pu files for fur
 ## TODO
 
 - add image caching
+
+## License
+
+As of November 2025, this plugin has changed its license from the **MIT License** to the **GNU Affero General Public License (AGPL v3)**.
+
+- **Older versions (up to commit `f6a6a81`)** remain available under the MIT License.
+  Please see `original-LICENSE-by-dkd` file for details.
+- **Newer versions** are released under the AGPL v3.
+
+The adoption of AGPL aims to ensure transparency within the open-source community while also encouraging fair contributions from organizations that benefit from this software.
+
+For details, please see the [`COPYING`](./COPYING) file.
+
+```text
+Copyright (C) 2025  gemmaro <gemmaro.dev@gmail.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+```
