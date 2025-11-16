@@ -1,5 +1,9 @@
 # Change Log of Redmine PlantUML plugin
 
+## Version 0.6.1 -- 2025-11-16
+
+- Update metadata in `init.rb`
+
 ## Version 0.6.0 -- 2025-11-16
 
 - Change license to AGPLv3
