@@ -1,0 +1,73 @@
+name: Plugin CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        redmine:
+          # - "2.6.10"
+          # - "3.4.13"
+          # - "4.2.11"
+          # - "5.1.10"
+          - "6.1.0"
+
+    steps:
+      - name: Checkout Redmine
+        uses: actions/checkout@v4
+        with:
+          repository: redmine/redmine
+          ref: ${{ matrix.redmine }}
+          path: redmine
+      - name: Checkout plugin
+        uses: actions/checkout@v4
+        with:
+          path: redmine/plugins/plantuml
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsqlite3-dev plantuml
+        shell: bash
+
+      - name: Configure database settings
+        working-directory: redmine
+        run: |
+          cat > config/database.yml <<EOF
+          test:
+            adapter: sqlite3
+            database: db/test.sqlite3
+          EOF
+        shell: bash
+      - name: Remove Windows-only gems
+        working-directory: redmine
+        run: |
+          sed -i "/gem 'tzinfo-data'/d" Gemfile
+          sed -i '/gem "ffi"/d' Gemfile
+      - name: Install dependencies
+        working-directory: redmine
+        run: |
+          bundle install
+        shell: bash
+      - name: Migrate database
+        working-directory: redmine
+        run: |
+          bundle exec rake db:migrate RAILS_ENV=test
+        shell: bash
+
+      - name: Run plugin tests
+        working-directory: redmine
+        run: |
+          bundle exec rake redmine:plugins:test
+        shell: bash
