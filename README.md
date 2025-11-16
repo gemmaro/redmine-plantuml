@@ -2,6 +2,12 @@
 
 This plugin will allow adding [PlantUML](http://plantuml.sourceforge.net/) diagrams into Redmine.
 
+Links:
+
+- [Original GitHub repository by dkd](https://github.com/dkd/plantuml)
+  - [Original plugin page](https://www.redmine.org/plugins/plantuml) at `redmine.org`
+- [**Current project repository**](https://github.com/gemmaro/redmine-plantuml)
+
 ## Requirements
 
 - Java
