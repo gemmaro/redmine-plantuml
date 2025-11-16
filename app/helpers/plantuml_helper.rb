@@ -14,6 +14,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 require 'digest/sha2'
+require "open3"
 
 module PlantumlHelper
   ALLOWED_FORMATS = {
@@ -45,7 +46,17 @@ module PlantumlHelper
       end
     end
     unless File.file?(plantuml_file(name, frmt[:ext]))
-      `"#{settings_binary}" -charset UTF-8 -t"#{frmt[:type]}" "#{plantuml_file(name, '.pu')}"`
+      out, status = Open3.capture2e(
+        settings_binary,
+        "-charset", "UTF-8",
+        "-t", frmt[:type],
+        plantuml_file(name, '.pu'),
+      )
+      unless status.success?
+        Rails.logger.error("status: #{status.inspect}")
+        raise StandardError, "Failed to run PlantUML"
+      end
+      Rails.logger.info("out: #{out}")
     end
     name
   end
