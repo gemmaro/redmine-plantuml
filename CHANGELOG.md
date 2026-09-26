@@ -1,5 +1,9 @@
 # Change Log of Redmine PlantUML plugin
 
+## Version 0.6.2 -- 2026-09-26
+
+- Update upper Redmine version to 7.0.
+
 ## Version 0.6.1 -- 2025-11-16
 
 - Update metadata in `init.rb`
