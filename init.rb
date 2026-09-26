@@ -1,4 +1,4 @@
-# Copyright (C) 2025  gemmaro <gemmaro.dev@gmail.com>
+# Copyright (C) 2025, 2026  gemmaro <gemmaro.dev@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -20,7 +20,7 @@ Redmine::Plugin.register :plantuml do
   version '0.6.1'
   url 'https://github.com/gemmaro/redmine-plantuml'
 
-  requires_redmine version: '2.6'..'6.1'
+  requires_redmine version: '2.6'..'7.0'
 
   settings(partial: 'settings/plantuml',
            default: { 'plantuml_binary' => {}, 'cache_seconds' => '0', 'allow_includes' => false })
